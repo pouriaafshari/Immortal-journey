@@ -1,0 +1,7 @@
+{"frames":{"Maja0.png":{"frame":{"x":0,"y":0,"w":12,"h":14},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":12,"h":14},"sourceSize":{"w":12,"h":14}},"Maja1.png":{"frame":{"x":12,"y":0,"w":12,"h":14},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":12,"h":14},"sourceSize":{"w":12,"h":14}},"Maja2.png":{"frame":{"x":24,"y":0,"w":12,"h":14},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":12,"h":14},"sourceSize":{"w":12,"h":14}},"Maja3.png":{"frame":{"x":0,"y":14,"w":12,"h":14},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":12,"h":14},"sourceSize":{"w":12,"h":14}},"Maja4.png":{"frame":{"x":12,"y":14,"w":12,"h":14},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":12,"h":14},"sourceSize":{"w":12,"h":14}},"Maja5.png":{"frame":{"x":24,"y":14,"w":12,"h":14},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":12,"h":14},"sourceSize":{"w":12,"h":14}}},
+"animations": {
+    "run": ["Maja0.png", "Maja1.png", "Maja2.png", "Maja3.png"],
+    "up": ["Maja4.png"],
+    "down": ["Maja5.png"]
+},
+"meta":{"app":"https://github.com/piskelapp/piskel/","version":"1.0","image":"Maja.png","format":"RGBA8888","size":{"w":36,"h":28}}}

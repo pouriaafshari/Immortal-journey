@@ -1,27 +1,42 @@
 import { Application, Assets, Sprite } from 'pixi.js'
 import groundPng from '../assets/ground.png'
 
-export default class Ground{
-    groundSprite = new Sprite
+export default class Ground {
+    groundSprites: Sprite[] = [];
+    groundWidth: number = 0;
+    groundHeight: number = 500;
 
-    async generateGround(app: Application){
+    async generateGround(app: Application) {
         const groundAsset = await Assets.load(groundPng);
-        this.groundSprite = new Sprite(groundAsset)
-        app.stage.addChild(this.groundSprite);
 
-        this.groundSprite.anchor.set(0.5)
-        this.groundSprite.x = app.screen.width / 2;
-        this.groundSprite.y = (app.screen.height / 2)-30;
-        this.groundSprite.width = app.screen.width + 400;
-        this.groundSprite.height = 220;
+        // Calculate the number of ground sprites needed to cover the screen width
+        const numGroundSprites = Math.ceil(app.screen.width / groundAsset.width) + 3;
+
+        // Create and position ground sprites
+        for (let i = 0; i < numGroundSprites; i++) {
+            const groundSprite = new Sprite(groundAsset);
+            groundSprite.anchor.set(0.5);
+            groundSprite.y = (app.screen.height / 2) + 152.5;
+            groundSprite.height = this.groundHeight;
+            groundSprite.scale = 4
+
+            // Position each ground sprite next to the previous one
+            groundSprite.x = (app.screen.width / 2) + i * groundSprite.width - (groundSprite.width / 2);
+
+            this.groundWidth = groundSprite.width;
+            this.groundSprites.push(groundSprite);
+            app.stage.addChild(groundSprite);
+        }
 
         app.ticker.add((time) => {
-            this.groundSprite.x -= 4 * time.deltaTime;
+            for (let groundSprite of this.groundSprites) {
+                groundSprite.x -= 5 * time.deltaTime;
 
-        // Reset the obstacle position if it moves off screen
-        if (this.groundSprite.x < (app.screen.width / 2) - 138) {
-            this.groundSprite.x = app.screen.width / 2;
-        }
-        })
+                // Reset the ground position if it moves off screen
+                if (groundSprite.x < (app.screen.width / 2) - (numGroundSprites * this.groundWidth) / 2) {
+                    groundSprite.x += numGroundSprites * this.groundWidth;
+                }
+            }
+        });
     }
 }

@@ -1,35 +1,53 @@
 import { Application, Assets, Sprite } from 'pixi.js';
-import obsPng from '../assets/obs.png';
+import enemy1 from '../assets/enemy0.png';
+import enemy2 from '../assets/enemy1.png';
+import enemy3 from '../assets/enemy2.png';
 
 export default class Obstacle {
-    obstacleSprite: Sprite = new Sprite;
+    obstacleSprite: Sprite;
     obstacleType: number;
     obstaclePosition: number;
 
     constructor() {
         this.obstacleType = 1;
         this.obstaclePosition = 0;
+        this.obstacleSprite = new Sprite();
     }
 
     async generateObstacle(app: Application) {
-        const obs = await Assets.load(obsPng);
-        this.obstacleSprite = new Sprite(obs);
+        // Load enemy assets
+        const enemyAssets = [enemy1, enemy2, enemy3];
+        const selectedEnemy = enemyAssets[Math.floor(Math.random() * enemyAssets.length)];
+
+        // Load the selected enemy asset
+        const obs = await Assets.load(selectedEnemy);
+        this.obstacleSprite.texture = obs;
 
         this.obstacleSprite.anchor.set(0.5);
         this.obstacleSprite.x = app.screen.width;
-        this.obstacleSprite.y = (app.screen.height / 2)+5;
-        this.obstacleSprite.width = 50;
-        this.obstacleSprite.height = 50;
+        this.obstacleSprite.y = (app.screen.height / 4) * 3 - 20;
+        this.obstacleSprite.scale = 4
 
         app.stage.addChild(this.obstacleSprite);
     }
 
     update(delta: number, app: Application) {
-        this.obstacleSprite.x -= 4 * delta;
+        this.obstacleSprite.x -= 5 * delta;
 
         // Reset the obstacle position if it moves off screen
         if (this.obstacleSprite.x < -this.obstacleSprite.width) {
             this.obstacleSprite.x = app.screen.width + this.obstacleSprite.width;
+            this.setRandomEnemy();
         }
+    }
+
+    async setRandomEnemy() {
+        // Load enemy assets
+        const enemyAssets = [enemy1, enemy2, enemy3];
+        const selectedEnemy = enemyAssets[Math.floor(Math.random() * enemyAssets.length)];
+
+        // Load the selected enemy asset
+        const obs = await Assets.load(selectedEnemy);
+        this.obstacleSprite.texture = obs;
     }
 }
