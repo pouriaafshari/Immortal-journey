@@ -33,7 +33,7 @@ export default class Obstacle {
 
     update(delta: number, app: Application) {
         this.obstacleSprite.x -= 5 * delta;
-
+        console.log("was????")
         // Reset the obstacle position if it moves off screen
         if (this.obstacleSprite.x < -this.obstacleSprite.width) {
             this.obstacleSprite.x = app.screen.width + this.obstacleSprite.width;

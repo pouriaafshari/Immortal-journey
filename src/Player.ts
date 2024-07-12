@@ -12,7 +12,7 @@ export default class Player {
     constructor() {
         this.isJumping = false;
         this.jumpSpeed = -10; // Initial jump speed (negative to move up)
-        this.gravity = 0.5; // Gravity to bring the player back down
+        this.gravity = 0.4; // Gravity to bring the player back down
     }
 
     async createPlayer(app: Application) {
