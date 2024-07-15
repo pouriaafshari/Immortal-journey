@@ -25,7 +25,7 @@ export default class Obstacle {
 
         this.obstacleSprite.anchor.set(0.5);
         this.obstacleSprite.x = app.screen.width;
-        this.obstacleSprite.y = (app.screen.height / 4) * 3 - 20;
+        this.obstacleSprite.y = (app.screen.height / 4) * 3 - 52;
         this.obstacleSprite.scale = 4
 
         app.stage.addChild(this.obstacleSprite);

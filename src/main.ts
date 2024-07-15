@@ -4,7 +4,7 @@ import { addMountains } from './addMountains';
 import Player from './Player';
 import Ground from './Ground';
 import { SpineBoy } from './SpineBoy';
-import { Controller } from './controller';
+import { Controller } from './Controller';
 import Obstacle from './Obstacle';
 
 PIXI.TextureStyle.defaultOptions.scaleMode = 'nearest';
@@ -55,15 +55,15 @@ const app = new PIXI.Application();
             fontWeight: 'bold',
         });
 
-        const spineBoyText = new PIXI.Text('Spine Boy', style);
+        const spineBoyText = new PIXI.Text({text: 'Spine Boy', style});
         spineBoyText.x = app.screen.width / 2 - spineBoyText.width / 2;
-        spineBoyText.y = app.screen.height / 2 - 50;
+        spineBoyText.y = app.screen.height / 2 - 20;
         spineBoyText.interactive = true;
         spineBoyText.on('pointerdown', () => {
             startGame('spineboy');
         });
 
-        const majaText = new PIXI.Text('Maja', style);
+        const majaText = new PIXI.Text({text: 'Maja', style});
         majaText.x = app.screen.width / 2 - majaText.width / 2;
         majaText.y = app.screen.height / 2 + 50;
         majaText.interactive = true;
@@ -92,7 +92,7 @@ const app = new PIXI.Application();
         if (character === 'spineboy') {
             characterInstance = new SpineBoy();
             characterInstance.view.x = app.screen.width / 2;
-            characterInstance.view.y = app.screen.height - 80;
+            characterInstance.view.y = app.screen.height - 150;
             characterInstance.spine.scale.set(0.5);
             app.stage.addChild(characterInstance.view);
         } else {
