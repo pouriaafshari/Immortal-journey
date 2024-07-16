@@ -16,7 +16,7 @@ export default class Ground {
         for (let i = 0; i < numGroundSprites; i++) {
             const groundSprite = new Sprite(groundAsset);
             groundSprite.anchor.set(0.5);
-            groundSprite.y = (app.screen.height / 2) + 152.5;
+            groundSprite.y = window.innerHeight / 1;
             groundSprite.height = this.groundHeight;
             groundSprite.scale = 4
 

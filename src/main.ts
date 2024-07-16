@@ -13,7 +13,7 @@ const app = new PIXI.Application();
 
 (async () => {
     // Initialize the application.
-    await app.init({ background: '#021f4b', width: window.innerWidth, height: window.innerHeight / 2 });
+    await app.init({ background: '#021f4b', resizeTo: window });
 
     document.body.appendChild(app.view);
 
@@ -92,7 +92,7 @@ const app = new PIXI.Application();
         if (character === 'spineboy') {
             characterInstance = new SpineBoy();
             characterInstance.view.x = app.screen.width / 2;
-            characterInstance.view.y = app.screen.height - 150;
+            characterInstance.view.y = window.innerHeight / 1 - 60;
             characterInstance.spine.scale.set(0.5);
             app.stage.addChild(characterInstance.view);
         } else {

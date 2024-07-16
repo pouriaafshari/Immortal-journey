@@ -34,7 +34,7 @@ export default class Player {
         this.maja = new AnimatedSprite(this.runTextures);
         this.maja.scale.set(5);
         this.maja.animationSpeed = 1 / 6; // 6 fps
-        this.maja.position.set((app.screen.width / 2) - 200, app.screen.height / 2);
+        this.maja.position.set((app.screen.width / 2) - 200, window.innerHeight / 1 - 152);
         this.maja.play();
         app.stage.addChild(this.maja);
 
@@ -64,8 +64,8 @@ export default class Player {
             this.jumpSpeed += this.gravity;
 
             // Check if the player has landed (pseudo ground level check)
-            if (this.maja.y >= window.innerHeight / 4) {
-                this.maja.y = window.innerHeight / 4;
+            if (this.maja.y >= window.innerHeight / 1 - 152) {
+                this.maja.y = window.innerHeight / 1 - 152;
                 this.isJumping = false;
                 this.jumpSpeed = 0;
                 this.switchAnimation(this.runTextures);
